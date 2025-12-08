@@ -337,35 +337,35 @@ function createMainMenuCarousel() {
       type: 'carousel',
       columns: [
         {
-          thumbnailImageUrl: 'https://statics-readr-tw-prod.readr.tw/images/e27e2a0d-e11b-4865-9374-730493312baf.png',
+          thumbnailImageUrl: 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/menu1.png?raw=true',
           text: '點選辨識按鈕，開始協作。',
           actions: [
             { type: 'message', label: '開始辨識', text: '開始辨識' }
           ]
         },
         {
-          thumbnailImageUrl: 'https://statics-readr-tw-prod.readr.tw/images/7c847cac-ceeb-4f47-81f7-dcc88503978f.png',
+          thumbnailImageUrl: 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/menu2.png?raw=true',
           text: '點選驗證按鈕，開始協作。',
           actions: [
             { type: 'message', label: '開始驗證', text: '開始驗證' }
           ]
         },
         {
-          thumbnailImageUrl: 'https://statics-readr-tw-prod.readr.tw/images/e383f203-a5de-4b2a-83ee-9ae00222fbec.png',
+          thumbnailImageUrl: 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/menu3.png?raw=true',
           text: '查看教學內容。',
           actions: [
             { type: 'message', label: '查看教學', text: '查看教學' }
           ]
         },
         {
-          thumbnailImageUrl: 'https://statics-readr-tw-prod.readr.tw/images/4f9e3fe9-0eb8-4edf-904e-56ab161ebe80.png',
+          thumbnailImageUrl: 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/menu4.png?raw=true',
           text: '查看計畫緣起網站',
           actions: [
             { type: 'message', label: '這個專案在做什麼', text: '暸解計劃緣起' }
           ]
         },
         {
-          thumbnailImageUrl: 'https://statics-readr-tw-dev.readr.tw/images/77261ba8-43f3-4332-b183-b721b14b5d8f-w480.png',
+          thumbnailImageUrl: 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/menu5.png?raw=true',
           text: '遇到問題或有建議嗎？',
           actions: [
             { type: 'message', label: '回報問題', text: '回報問題' }
@@ -385,8 +385,8 @@ const TUTORIAL_JUMP_OUT_ACTION = {
     text: '跳出'
   }
 };
-const PROPOSAL_REASON_GUIDE_IMAGE_URL = 'https://statics-readr-tw-dev.readr.tw/images/e97e2e10-b7d4-4185-aa20-c69e67c961b2.png';
-const TUTORIAL_INTRO_IMAGE_URL = 'https://statics-readr-tw-prod.readr.tw/images/d2f8e9f8-1e7a-45e9-b3dc-10e3db04c11f-w800.png';
+const PROPOSAL_REASON_GUIDE_IMAGE_URL = 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/PROPOSAL_REASON_GUIDE_IMAGE.png?raw=true';
+const TUTORIAL_INTRO_IMAGE_URL = 'https://github.com/Citizen-Congress-Watch/budget_linebot/blob/main/image/TUTORIAL_INTRO_IMAGE.png?raw=true';
 const FEEDBACK_PROMPT_TEXT = '🙋‍♀️ 回報問題\n\n請輸入你想回報的問題或意見，輸入完成後再傳送給我。\n如果想退出回報流程，輸入「取消回報」即可。';
 const FEEDBACK_SPREADSHEET_ID = process.env.FEEDBACK_SPREADSHEET_ID;
 const FEEDBACK_SHEET_RANGE = process.env.FEEDBACK_SHEET_RANGE;
