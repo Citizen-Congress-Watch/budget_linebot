@@ -1,0 +1,33 @@
+substitutions:
+  _REGION: asia-east1
+  _SERVICE_NAME: budget-linebot
+  _REPO_NAME: budget-linebot
+  _IMAGE_TAG: latest
+  _PLATFORM: managed
+  _ALLOW_UNAUTH: "true"
+  _TIMEOUT: "600s"
+
+steps:
+- id: "Build image"
+  name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "asia.gcr.io/$PROJECT_ID/${_REPO_NAME}:${_IMAGE_TAG}", "."]
+
+- id: "Push image"
+  name: "gcr.io/cloud-builders/docker"
+  args: ["push", "asia.gcr.io/$PROJECT_ID/${_REPO_NAME}:${_IMAGE_TAG}"]
+
+- id: "Deploy to Cloud Run"
+  name: "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+  entrypoint: gcloud
+  args:
+    [
+      "run", "deploy", "${_SERVICE_NAME}",
+      "--image", "asia.gcr.io/$PROJECT_ID/${_REPO_NAME}:${_IMAGE_TAG}",
+    ]
+
+images:
+- "asia.gcr.io/$PROJECT_ID/${_REPO_NAME}:${_IMAGE_TAG}"
+
+timeout: "1200s"
+options:
+  logging: CLOUD_LOGGING_ONLY

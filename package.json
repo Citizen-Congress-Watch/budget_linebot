@@ -1,0 +1,27 @@
+{
+  "name": "linebot-keystone-quiz",
+  "version": "1.0.0",
+  "description": "LINE Bot for Keystone photo quiz",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@keystone-6/core": "^5.0.0",
+    "@line/bot-sdk": "^7.5.2",
+    "axios": "^1.5.0",
+    "canvas": "^2.11.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "googleapis": "^133.0.0"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^11.0.0",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
