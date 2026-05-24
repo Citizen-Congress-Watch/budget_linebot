@@ -324,7 +324,7 @@ async function handleFeedbackSession(userId, replyToken, messageText) {
 function createWelcomeMessage() {
   return {
     type: 'text',
-    text: '歡迎加入預算提案單協作的行列！手機版請點選下列選單的不同功能來開始，電腦版請隨意傳送文字，即可獲得選單。若你是第一次聽說這個專案，請點擊「查看教學」或前往 www.ooo.com 查看。'
+    text: '歡迎加入預算提案單協作的行列！手機版請點選下列選單的不同功能來開始，電腦版請隨意傳送文字，即可獲得選單。若你是第一次聽說這個專案，請點擊「查看教學」或前往 https://watchmoney.ccw.org.tw/collaboration 查看。'
   };
 }
 
