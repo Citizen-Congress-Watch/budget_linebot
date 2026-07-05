@@ -114,7 +114,7 @@ class KeystoneAPI {
   }
 
 
-  // 取得隨機照片 (使用 GraphQL)
+  // 取得最新照片 (使用 GraphQL)
   async getRandomPhoto(excludeUserId = null) {
     try {
       console.log('🔍 嘗試連接 Keystone GraphQL...');
@@ -213,9 +213,9 @@ class KeystoneAPI {
       console.log('📸 照片數量:', photos ? photos.length : 0);
       
       if (photos && photos.length > 0) {
-        const randomIndex = Math.floor(Math.random() * photos.length);
-        const selectedPhoto = photos[randomIndex];
-        console.log('🎲 選擇照片索引:', randomIndex);
+        const sortedPhotos = [...photos].sort((a, b) => Number(b.id) - Number(a.id));
+        const selectedPhoto = sortedPhotos[0];
+        console.log('🆕 選擇最新照片 ID:', selectedPhoto.id);
         console.log('📷 選中的照片:', JSON.stringify(selectedPhoto, null, 2));
         
         // 返回標準化的照片物件
@@ -248,10 +248,10 @@ class KeystoneAPI {
     }
   }
 
-  // 獲取隨機的 Recognition Status 記錄
+  // 獲取最新圖片對應的 Recognition Status 記錄
   async getRandomRecognitionStatus(excludeUserId = null) {
     try {
-      console.log('🔍 獲取隨機 Recognition Status...');
+      console.log('🔍 獲取最新圖片的 Recognition Status...');
       
       // 如果已經初始化，直接使用
       if (this.isInitialized) {
@@ -317,13 +317,15 @@ class KeystoneAPI {
         console.log('📋 Recognition Status 數量:', recognitionStatuses.length);
         
         // 過濾掉空的記錄（所有主要欄位都是 null 的記錄）
-        const validStatuses = recognitionStatuses.filter(status => 
-          status.governmentBudgetResult || 
-          status.budgetCategoryResult || 
-          status.budgetAmountResult || 
-          status.budgetTypeResult || 
-          status.reason
-        );
+        const validStatuses = recognitionStatuses.filter(status => (
+          status.image?.id && (
+            status.governmentBudgetResult ||
+            status.budgetCategoryResult ||
+            status.budgetAmountResult ||
+            status.budgetTypeResult ||
+            status.reason
+          )
+        ));
         
         console.log('📋 有效 Recognition Status 數量:', validStatuses.length);
         
@@ -332,10 +334,10 @@ class KeystoneAPI {
           return null;
         }
         
-        // 隨機選擇一個有效的記錄
-        const randomIndex = Math.floor(Math.random() * validStatuses.length);
-        const selectedStatus = validStatuses[randomIndex];
-        console.log('🎲 選擇 Recognition Status 索引:', randomIndex);
+        // 優先選擇最新上傳圖片對應的有效記錄
+        const sortedStatuses = [...validStatuses].sort((a, b) => Number(b.image.id) - Number(a.image.id));
+        const selectedStatus = sortedStatuses[0];
+        console.log('🆕 選擇最新圖片 ID:', selectedStatus.image.id);
         console.log('📷 選中的 Recognition Status:', JSON.stringify(selectedStatus, null, 2));
         
         return {
